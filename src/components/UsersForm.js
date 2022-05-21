@@ -46,22 +46,26 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
     } else {
       axios
         .post('https://users-crud1.herokuapp.com/users/', users)
-        .then(() => getUsers())
+        .then(() => {
+          getUsers();
+          reset();
+        })
         .catch((error) => console.log(error.response));
     }
   };
 
   const reset = () => {
     setName('');
-    setCategory('');
-    setPrice('');
-    setIsAvailable(false);
+    setLastName('');
+    setEmail('');
+    setBirthday('');
+    setPassword('');
   };
 
   return (
     <form onSubmit={submit}>
       <div className="input-group mb-3">
-        <label htmlfor="name" className="input-group-text">
+        <label htmlFor="name" className="input-group-text">
           First name
         </label>
         <input
@@ -71,7 +75,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <label htmlfor="lastName" className="input-group-text">
+        <label htmlFor="lastName" className="input-group-text">
           Last name
         </label>
         <input
@@ -84,7 +88,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
       </div>
 
       <div className="input-group mb-3">
-        <label htmlfor="email" className="input-group-text">
+        <label htmlFor="email" className="input-group-text">
           Email
         </label>
         <input
@@ -98,7 +102,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
       </div>
 
       <div className="input-group mb-3">
-        <label htmlfor="birthday" className="input-group-text">
+        <label htmlFor="birthday" className="input-group-text">
           Birthday
         </label>
         <input
@@ -111,7 +115,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
       </div>
 
       <div className="input-group mb-3">
-        <label htmlfor="password" className="input-group-text">
+        <label htmlFor="password" className="input-group-text">
           Password
         </label>
         <input
@@ -123,21 +127,14 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
         />
       </div>
 
-      <div className="btn-group" role="group">
-        <button type="submit" className="btn btn-success">
-          Submit
+      <button type="submit" className="btn btn-success">
+        Submit
+      </button>
+      {userSelected !== null && (
+        <button type="button" className="btn btn-danger" onClick={deselectUser}>
+          Cancel
         </button>
-
-        {userSelected !== null && (
-          <button
-            type="button"
-            className="btn btn-danger"
-            onClick={deselectUser}
-          >
-            Cancel
-          </button>
-        )}
-      </div>
+      )}
     </form>
   );
 };
