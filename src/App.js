@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import UsersList from './components/UsersList';
 import UsersForm from './components/UsersForm';
+import Footer from './components/Footer'
 import './style.css';
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
         userSelect={userSelect}
         deleteUser={deleteUser}
       />
+      <Footer />
     </div>
   );
 }
