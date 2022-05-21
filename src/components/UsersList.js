@@ -2,22 +2,11 @@ import React from 'react';
 
 const UsersList = ({ users, userSelect, deleteUser }) => {
   return (
-    <>
-      <div class="card text-bg-primary mb-3" style={{ maxWidth: '18rem' }}>
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div>
       <div className="row justify-content-center text-center">
         {users.map((users) => (
           <div
             key={users.id}
-            className="card text-bg-light m-3"
+            className="card text-bg-primary m-3"
             style={{
               maxWidth: '18rem',
               boxShadow: '2px 3px 5px grey',
@@ -53,7 +42,6 @@ const UsersList = ({ users, userSelect, deleteUser }) => {
           </div>
         ))}
       </div>
-    </>
   );
 };
 
