@@ -24,6 +24,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
       setEmail('');
       setBirthday('');
       setPassword('');
+      setType(false);
     }
   }, [userSelected]);
 
@@ -63,6 +64,7 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
     setEmail('');
     setBirthday('');
     setPassword('');
+    setType(false);
   };
 
   return (
