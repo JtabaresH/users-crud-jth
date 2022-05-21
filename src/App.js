@@ -24,6 +24,12 @@ export default function App() {
 
   const deselectUser = () => setUserSelected(null);
 
+  const deleteUser = (id) => {
+    axios
+      .delete(`https://users-crud1.herokuapp.com/users/${id}/`)
+      .then(() => getUsers());
+  };
+
   return (
     <div className="container mt-5">
       <UsersForm
@@ -31,7 +37,11 @@ export default function App() {
         userSelected={userSelected}
         deselectUser={deselectUser}
       />
-      <UsersList users={users} userSelect={userSelect} />
+      <UsersList
+        users={users}
+        userSelect={userSelect}
+        deleteUser={deleteUser}
+      />
     </div>
   );
 }

@@ -51,6 +51,13 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
     }
   };
 
+  const reset = () => {
+    setName('');
+    setCategory('');
+    setPrice('');
+    setIsAvailable(false);
+  };
+
   return (
     <form onSubmit={submit}>
       <div className="input-group mb-3">
@@ -116,9 +123,21 @@ const UsersForm = ({ getUsers, userSelected, deselectUser }) => {
         />
       </div>
 
-      <button type="submit" className="btn btn-success">
-        Submit
-      </button>
+      <div className="btn-group" role="group">
+        <button type="submit" className="btn btn-success">
+          Submit
+        </button>
+
+        {userSelected !== null && (
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={deselectUser}
+          >
+            Cancel
+          </button>
+        )}
+      </div>
     </form>
   );
 };

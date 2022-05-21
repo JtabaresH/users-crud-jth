@@ -1,34 +1,47 @@
 import React from 'react';
 
-const UsersList = ({ users, userSelect }) => {
+const UsersList = ({ users, userSelect, deleteUser }) => {
   return (
-    <ul className="list-group">
+    <div className="row justify-content-center text-center">
       {users.map((users) => (
-        <li key={users.id} className="list-group-item">
-          <h3>
+        <div
+          key={users.id}
+          className="card text-bg-light m-3"
+          style={{
+            maxWidth: '18rem',
+            boxShadow: '2px 3px 5px grey',
+          }}
+        >
+          <h3 className="card-header" style={{ backgroundColor: '#C6C6C6' }}>
             {users.first_name} {users.last_name}
           </h3>
-          <p>
-            <b>Email:</b> {users.email}
-          </p>
-          <p>
-            <b>Birthday:</b> {users.birthday}
-          </p>
-          <div className="btn-group" role="group">
-            <button
-              type="button"
-              className="btn btn-warning"
-              onClick={() => userSelect(users)}
-            >
-              Update
-            </button>
-            <button type="button" className="btn btn-danger">
-              Delete
-            </button>
+          <div className="card-body">
+            <p>
+              <b>Email</b> <br /> {users.email}
+            </p>
+            <p>
+              <b>Birthday</b> <br /> {users.birthday}
+            </p>
+            <div className="btn-group" role="group">
+              <button
+                type="button"
+                className="btn btn-warning"
+                onClick={() => userSelect(users)}
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                className="btn btn-danger"
+                onClick={() => deleteUser(users.id)}
+              >
+                Delete
+              </button>
+            </div>
           </div>
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
